@@ -1,1 +1,33 @@
-<p>header works!</p>
+<header class="header">
+  <!-- 1st Child (LOGO WRAPPER) -->
+  <div class="header__logo">
+    <img src="assets/svgs/logo.svg" alt="Logo" />
+  </div>
+
+  <!-- 2nd Child (Menu Icons) in Small Screens -->
+  <div class="header__menu-icon" (click)="toggleMenu()">
+    <img src="assets/svgs/menu_icon.svg" alt="menu icon" />
+  </div>
+
+  <!-- 2nd Child (Nav Links) in Large Screens -->
+  <nav class="header__links">
+    <ul>
+      <li *ngFor="let navItem of navLinks">
+        <a [routerLink]="['/', navItem.link]">{{ navItem.label }}</a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Fixed Menu in Small Screens -->
+  <nav class="header__menu" *ngIf="isMenuOpened">
+    <div class="header__menu-close" (click)="toggleMenu()">
+      <img src="assets/svgs/close.svg" alt="Logo" />
+    </div>
+
+    <ul>
+      <li *ngFor="let navItem of navLinks">
+        <a [routerLink]="['/', navItem.link]">{{ navItem.label }}</a>
+      </li>
+    </ul>
+  </nav>
+</header>
