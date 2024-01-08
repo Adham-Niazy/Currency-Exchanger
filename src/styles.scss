@@ -1,11 +1,52 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$currency-exchanger-primary: mat.define-palette(mat.$indigo-palette);
+$currency-exchanger-accent: mat.define-palette(
+  mat.$pink-palette,
+  A200,
+  A100,
+  A400
+);
+
+// The warn palette is optional (defaults to red).
+$currency-exchanger-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$currency-exchanger-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $currency-exchanger-primary,
+      accent: $currency-exchanger-accent,
+      warn: $currency-exchanger-warn,
+    ),
+  )
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($currency-exchanger-theme);
+
 @import 'assets/styles/media_queries_breakpoints.scss';
 
 :root {
-  --color-primary: #4040FF;
-  --color-primary-light-1: #E4ECF9;
-  --color-primary-light-2: #7A9EFD;
-  --color-primary-dark-1: #2828CE;
-  --color-primary-dark-2: #2A2ABC;
+  --color-primary: #4040ff;
+  --color-primary-light-1: #e4ecf9;
+  --color-primary-light-2: #7a9efd;
+  --color-primary-dark-1: #2828ce;
+  --color-primary-dark-2: #2a2abc;
   --grey-light-1: #faf9f9;
   --grey-light-2: #f4f2f2;
   --grey-light-3: #f0eeee;
@@ -40,5 +81,6 @@ body {
   font-weight: 400;
   line-height: 1.6;
   color: var(--grey-dark-1);
+  background-color: #f9faff;
   min-height: 100vh;
 }
