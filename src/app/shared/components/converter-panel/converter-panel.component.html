@@ -3,10 +3,26 @@
     <div class="converter__panel-input">
       <label for="amount">Amount.</label>
       <input type="number" [formControl]="amount" id="amount" />
+
+      <ng-container *ngIf="amount.touched">
+        <p class="text_red_error" *ngIf="amount.errors?.['min']">
+          This Field Can't be smaller than 0.
+        </p>
+        <p class="text_red_error" *ngIf="amount.errors?.['required']">
+          Field is required.
+        </p>
+      </ng-container>
     </div>
 
     <div class="converter__panel-conversion-rate">
-      1.00 {{ convertForm.value.from }} = XX.XX {{ convertForm.value.to }}
+      <p *ngIf="conversionRate === 0 && !PREMIUM_PLAN">Loading..</p>
+      <p *ngIf="conversionRate !== 0 && !PREMIUM_PLAN">
+        1.00 {{ convertForm.value.from }} = {{ conversionRate }}
+        {{ convertForm.value.to }}
+      </p>
+      <p class="text_red_error" *ngIf="PREMIUM_PLAN">
+        Sorry FREE Plan doesn't support this CURRENCY Convertion.
+      </p>
     </div>
   </div>
   <div>
@@ -15,20 +31,35 @@
         <app-dropdowns
           [list]="symbols"
           placeholder="From."
-          [control]="from"></app-dropdowns>
+          [control]="from"
+          [disabled]="convertForm.invalid"></app-dropdowns>
       </div>
-      <img src="assets/svgs/change_icon.svg" alt="Change Icon" />
+      <img
+        (click)="swapFromIntoTo()"
+        src="assets/svgs/change_icon.svg"
+        alt="Change Icon" />
       <div class="converter__panel-dropdown">
         <app-dropdowns
           [list]="symbols"
           placeholder="To."
-          [control]="to"></app-dropdowns>
+          [control]="to"
+          [disabled]="convertForm.invalid"></app-dropdowns>
       </div>
     </div>
-    <app-button content="Convert" type="submit"></app-button>
+    <app-button
+      content="Convert"
+      type="submit"
+      [disabled]="convertForm.invalid"></app-button>
 
     <div class="converter__panel-result">
-      <div class="result__text">XX.XX {{ convertForm.value.to }}</div>
+      <div *ngIf="!PREMIUM_PLAN" class="result__text">
+        {{ conversionResult === 0 ? '00.00' : conversionResult }}
+        {{ convertForm.value.to }}
+      </div>
+
+      <p class="text_red_error" *ngIf="PREMIUM_PLAN">
+        Sorry FREE Plan doesn't support this CURRENCY Convertion.
+      </p>
 
       <a
         [routerLink]="[
