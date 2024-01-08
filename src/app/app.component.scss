@@ -1,0 +1,11 @@
+@import '../assets/styles/media_queries_breakpoints.scss';
+
+.container {
+  margin: 2rem 1rem;
+}
+
+@media (min-width: $bp-large) {
+  .container {
+    margin: 4rem 7rem;
+  }
+}
