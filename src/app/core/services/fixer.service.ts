@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, of } from 'rxjs';
+import { Observable, map, of } from 'rxjs';
 import { GET_FROM_STORAGE, SAVE_TO_STORAGE } from '../utils/storage';
 import { SYMBOLS } from '../constants/storage';
 import { isOneDayPassed } from '../utils/date';
@@ -11,6 +11,20 @@ import { isOneDayPassed } from '../utils/date';
 export class FixerService {
 
   constructor(private http: HttpClient) { }
+
+  private getSymbolsListFromFixer() {
+    return this.http.get('symbols').pipe(
+      map((data) => {
+        // Store the data in localStorage along with the current date
+        const dataToStore = {
+          data,
+          lastRequestDate: new Date().toISOString(),
+        };
+        SAVE_TO_STORAGE(SYMBOLS, dataToStore)
+        return data;
+      }),
+    );
+  }
 
   getSymbolsList() {
     const savedData = GET_FROM_STORAGE(SYMBOLS);
@@ -29,17 +43,9 @@ export class FixerService {
     }
   }
 
-  private getSymbolsListFromFixer() {
-    return this.http.get('symbols').pipe(
-      map((data) => {
-        // Store the data in localStorage along with the current date
-        const dataToStore = {
-          data,
-          lastRequestDate: new Date().toISOString(),
-        };
-        SAVE_TO_STORAGE(SYMBOLS, dataToStore)
-        return data;
-      }),
-    );
+  getLatestConversionRate(params: { base: string, symbols: string }): Observable<any> {
+    return this.http.get('latest', {
+      params
+    })
   }
 }
