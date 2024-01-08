@@ -1,0 +1,43 @@
+<form class="converter__panel" [formGroup]="convertForm" (ngSubmit)="convert()">
+  <div class="converter__panel-left">
+    <div class="converter__panel-input">
+      <label for="amount">Amount.</label>
+      <input type="number" [formControl]="amount" id="amount" />
+    </div>
+
+    <div class="converter__panel-conversion-rate">
+      1.00 {{ convertForm.value.from }} = XX.XX {{ convertForm.value.to }}
+    </div>
+  </div>
+  <div>
+    <div class="converter__panel-right">
+      <div class="converter__panel-dropdown">
+        <app-dropdowns
+          [list]="symbols"
+          placeholder="From."
+          [control]="from"></app-dropdowns>
+      </div>
+      <img src="assets/svgs/change_icon.svg" alt="Change Icon" />
+      <div class="converter__panel-dropdown">
+        <app-dropdowns
+          [list]="symbols"
+          placeholder="To."
+          [control]="to"></app-dropdowns>
+      </div>
+    </div>
+    <app-button content="Convert" type="submit"></app-button>
+
+    <div class="converter__panel-result">
+      <div class="result__text">XX.XX {{ convertForm.value.to }}</div>
+
+      <a
+        [routerLink]="[
+          '/',
+          convertForm.value.from + '-' + convertForm.value.to
+        ]"
+        class="details__btn">
+        <app-button content="More Details" type="button"></app-button>
+      </a>
+    </div>
+  </div>
+</form>
