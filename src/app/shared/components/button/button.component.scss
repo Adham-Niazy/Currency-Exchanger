@@ -6,4 +6,9 @@ button {
   background-color: var(--color-primary);
   color: var(--grey-light-1);
   font-size: 2rem;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
 }
