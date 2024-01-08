@@ -11,8 +11,10 @@ export class DropdownsComponent implements OnInit {
   @Input() control: FormControl = new FormControl();
   @Input() list: CurrencySymbols = {};
   @Input() placeholder = '';
+  @Input() disabled = false;
+
   constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
 }
