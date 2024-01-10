@@ -1,27 +1,58 @@
-# CurrencyExchanger
+# [Currency Exchanger](https://currency-exchanger-snowy.vercel.app) 💹💰 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.1.
+<h1 align="center">Home Page</h1>
 
-## Development server
+![Home Page Preview](Home_Page.png)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+<h1 align="center">Details Page</h1>
 
-## Code scaffolding
+![Home Page Preview](Details_Page.png)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Here's what I put into my consideration. 🧠
 
-## Build
+## 1. Git & CICD ⚡
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+* I used `Feature-Based` Git Workflow, not only Keep my development history intact and in multiple commits: `75` commit, I have made `4 PRs` each Pull Request has a specific feature from the sprint. 
 
-## Running unit tests
+* I used `Automatic CICD` offered by `Vercel`. 🌐
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## 2. Structure (I used the following structure in my code). 🧹
 
-## Running end-to-end tests
+- app
+  - components
+    - historical-rates
+    - most-popular-currencies
+  - core
+    - constants
+    - interceptors
+    - models
+    - services
+    - utils
+  - layout
+    - header
+  - pages
+    - home
+    - details
+  - shared
+    - components
+      - button
+      - chart
+      - converter-panel
+      - dropdowns
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## 3. Style 🎨
 
-## Further help
+* Utilizing my own SCSS.
+* Mobile-First Approach.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## 4. TypeScript 
+
+## 5. RxJs (Those are the Operators I used when needed.) ⚡🧠💪🏼
+
+1. (`map` + `of`) For caching requests and return a stored data as *Observable*.
+2. (`forkJoin`) For Joining 12-Month responses in one response.
+
+## 6. Linting/Formatting 🫧
+
+run `ng lint && ng format` for applying my linting/formating configuration in this project. [Config Files Attached].
+
