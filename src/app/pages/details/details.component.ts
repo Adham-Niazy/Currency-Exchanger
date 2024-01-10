@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CurrencySymbols } from 'src/app/core/models';
 import { FixerService } from 'src/app/core/services/fixer.service';
@@ -9,7 +9,7 @@ import { FixerService } from 'src/app/core/services/fixer.service';
   styleUrls: ['./details.component.scss']
 })
 export class DetailsComponent implements OnInit {
-  @Input() symbols: CurrencySymbols = {}
+  symbols: CurrencySymbols = {}
   from: string = "";
   to: string = "";
   constructor(
@@ -22,6 +22,10 @@ export class DetailsComponent implements OnInit {
       [this.from, this.to] = param['currencies'].split("-");
     });
     this.API.getSymbolsList().subscribe((res) => (this.symbols = res.symbols));
+    this.API.getLatestConversionRate({
+      base: 'EUR',
+      symbols: ""
+    }).subscribe();
   }
 
 }
