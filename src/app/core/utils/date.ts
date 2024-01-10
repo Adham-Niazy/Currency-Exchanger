@@ -1,7 +1,7 @@
-export function isOneDayPassed(lastRequestDate: string): boolean {
+export function isAmountTimePassed(lastRequestDate: string, time: number): boolean {
   const lastRequestDateTime = new Date(lastRequestDate).getTime();
   const currentTime = new Date().getTime();
-  const oneDayInMilliseconds = 24 * 60 * 60 * 1000;
+  const AmountInMilliseconds = time;
 
-  return currentTime - lastRequestDateTime >= oneDayInMilliseconds;
+  return currentTime - lastRequestDateTime >= AmountInMilliseconds;
 }

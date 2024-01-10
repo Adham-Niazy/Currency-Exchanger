@@ -1,4 +1,9 @@
-h2 {
-  margin-bottom: 4rem;
-  font-size: 3rem;
+.section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  h2 {
+    font-size: 3rem;
+  }
 }

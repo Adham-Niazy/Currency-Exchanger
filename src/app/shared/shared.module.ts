@@ -29,7 +29,8 @@ import { RouterModule } from '@angular/router';
     ReactiveFormsModule
   ],
   exports: [
-    ConverterPanelComponent
+    ConverterPanelComponent,
+    ButtonComponent
   ]
 })
 export class SharedModule { }

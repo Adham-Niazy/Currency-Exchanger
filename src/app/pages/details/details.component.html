@@ -1,8 +1,13 @@
-<h2>{{ from }} - {{ symbols[from] }}</h2>
+<div class="section">
+  <h2>{{ from }} - {{ symbols[from] }}</h2>
+
+  <a [routerLink]="['/']">
+    <app-button content="Back to Home" type="button"></app-button>
+  </a>
+</div>
 
 <div class="card__section-container">
   <app-converter-panel
-    [symbols]="symbols"
     [defaultFrom]="from"
     [defaultTo]="to"
     [detailsMode]="true"></app-converter-panel>
