@@ -1,0 +1,34 @@
+@import '../../../assets/styles/media_queries_breakpoints.scss';
+
+.most_popular_section {
+  margin-top: 2rem;
+  display: grid;
+  gap: 3rem;
+  text-align: center;
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  .loading {
+    grid-column: span 3 / span 3;
+  }
+}
+
+@media (min-width: $bp-medium) {
+  .most_popular_section {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: $bp-medium) {
+  .most_popular_section {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: $bp-small) {
+  .most_popular_section {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+}
