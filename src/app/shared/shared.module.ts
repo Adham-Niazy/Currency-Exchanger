@@ -10,6 +10,7 @@ import { DropdownsComponent } from './components/dropdowns/dropdowns.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ButtonComponent } from './components/button/button.component';
 import { RouterModule } from '@angular/router';
+import { ChartComponent } from './components/chart/chart.component';
 
 
 
@@ -18,6 +19,7 @@ import { RouterModule } from '@angular/router';
     ConverterPanelComponent,
     DropdownsComponent,
     ButtonComponent,
+    ChartComponent,
   ],
   imports: [
     CommonModule,
@@ -30,7 +32,8 @@ import { RouterModule } from '@angular/router';
   ],
   exports: [
     ConverterPanelComponent,
-    ButtonComponent
+    ButtonComponent,
+    ChartComponent
   ]
 })
 export class SharedModule { }
