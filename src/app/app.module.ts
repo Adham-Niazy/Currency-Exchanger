@@ -11,13 +11,15 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { DetailsComponent } from './pages/details/details.component';
 import { MostPopularCurrenciesComponent } from './components/most-popular-currencies/most-popular-currencies.component';
+import { HistoricalRatesComponent } from './components/historical-rates/historical-rates.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     DetailsComponent,
-    MostPopularCurrenciesComponent
+    MostPopularCurrenciesComponent,
+    HistoricalRatesComponent
   ],
   imports: [
     BrowserModule,
