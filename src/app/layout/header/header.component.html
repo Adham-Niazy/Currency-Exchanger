@@ -1,7 +1,9 @@
 <header class="header">
   <!-- 1st Child (LOGO WRAPPER) -->
   <div class="header__logo">
-    <img src="assets/svgs/logo.svg" alt="Logo" />
+    <a href="/">
+      <img src="assets/svgs/logo.svg" alt="Logo" />
+    </a>
   </div>
 
   <!-- 2nd Child (Menu Icons) in Small Screens -->
@@ -12,7 +14,7 @@
   <!-- 2nd Child (Nav Links) in Large Screens -->
   <nav class="header__links">
     <ul>
-      <li *ngFor="let navItem of navLinks">
+      <li class="cursor_pointer" *ngFor="let navItem of navLinks">
         <a [routerLink]="['/', navItem.link]">{{ navItem.label }}</a>
       </li>
     </ul>
@@ -25,7 +27,7 @@
     </div>
 
     <ul>
-      <li *ngFor="let navItem of navLinks">
+      <li class="cursor_pointer" *ngFor="let navItem of navLinks">
         <a [routerLink]="['/', navItem.link]">{{ navItem.label }}</a>
       </li>
     </ul>
