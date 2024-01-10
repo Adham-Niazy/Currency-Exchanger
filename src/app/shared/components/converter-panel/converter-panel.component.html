@@ -22,12 +22,16 @@
     </div>
 
     <div class="converter__panel-conversion-rate">
-      <p *ngIf="conversionRate === 0 && !PREMIUM_PLAN">Loading..</p>
-      <p *ngIf="conversionRate !== 0 && !PREMIUM_PLAN">
-        1.00 {{ convertForm.value.from }} = {{ conversionRate }}
-        {{ convertForm.value.to }}
+      <p *ngIf="!this.currencyStore.PREMIUM_PLAN">
+        1.00 {{ this.currencyStore.from }} ≈
+        {{
+          this.currencyStore.conversionRate === 0
+            ? '00:00'
+            : this.currencyStore.conversionRate
+        }}
+        {{ this.currencyStore.to }}
       </p>
-      <p class="text_red_error" *ngIf="PREMIUM_PLAN">
+      <p class="text_red_error" *ngIf="this.currencyStore.PREMIUM_PLAN">
         Sorry FREE Plan doesn't support this CURRENCY Convertion.
       </p>
     </div>
@@ -59,12 +63,16 @@
       [disabled]="convertForm.invalid"></app-button>
 
     <div class="converter__panel-result">
-      <div *ngIf="!PREMIUM_PLAN" class="result__text">
-        {{ conversionResult === 0 ? '00.00' : conversionResult }}
-        {{ convertForm.value.to }}
+      <div *ngIf="!this.currencyStore.PREMIUM_PLAN" class="result__text">
+        {{
+          this.currencyStore.conversionResult === 0
+            ? '00.00'
+            : this.currencyStore.conversionResult
+        }}
+        {{ this.currencyStore.to }}
       </div>
 
-      <p class="text_red_error" *ngIf="PREMIUM_PLAN">
+      <p class="text_red_error" *ngIf="this.currencyStore.PREMIUM_PLAN">
         Sorry FREE Plan doesn't support this CURRENCY Convertion.
       </p>
 
