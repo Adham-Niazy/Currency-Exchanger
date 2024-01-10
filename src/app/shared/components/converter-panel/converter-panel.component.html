@@ -2,11 +2,18 @@
   <div class="converter__panel-left">
     <div class="converter__panel-input">
       <label for="amount">Amount.</label>
-      <input type="number" [formControl]="amount" id="amount" />
+      <input
+        type="number"
+        [formControl]="amount"
+        id="amount"
+        max="250000000000"
+        min="0.01" />
 
       <ng-container *ngIf="amount.touched">
-        <p class="text_red_error" *ngIf="amount.errors?.['min']">
-          This Field Can't be smaller than 0.
+        <p
+          class="text_red_error"
+          *ngIf="amount.errors?.['min'] || amount.errors?.['max']">
+          This Field should be more than 0.01 and less than 250,000,000,000.
         </p>
         <p class="text_red_error" *ngIf="amount.errors?.['required']">
           Field is required.
@@ -32,7 +39,7 @@
           [list]="symbols"
           placeholder="From."
           [control]="from"
-          [disabled]="convertForm.invalid"></app-dropdowns>
+          [disabled]="convertForm.invalid || detailsMode"></app-dropdowns>
       </div>
       <img
         (click)="swapFromIntoTo()"
@@ -66,7 +73,8 @@
           '/',
           convertForm.value.from + '-' + convertForm.value.to
         ]"
-        class="details__btn">
+        class="details__btn"
+        *ngIf="!detailsMode">
         <app-button content="More Details" type="button"></app-button>
       </a>
     </div>
