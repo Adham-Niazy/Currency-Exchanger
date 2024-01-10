@@ -1,5 +1,11 @@
 <h2>Currency Exchanger.</h2>
 
-<div class="home__container">
-  <app-converter-panel></app-converter-panel>
+<div class="card__section-container">
+  <app-converter-panel
+    [symbols]="symbols"
+    defaultFrom="EUR"
+    defaultTo="USD"
+    [detailsMode]="false"></app-converter-panel>
 </div>
+
+<app-most-popular-currencies></app-most-popular-currencies>

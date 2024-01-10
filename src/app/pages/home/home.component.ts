@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CurrencySymbols } from 'src/app/core/models';
+import { FixerService } from 'src/app/core/services/fixer.service';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { }
+  symbols: CurrencySymbols = {};
+  constructor(private API: FixerService) { }
 
   ngOnInit(): void {
+    this.API.getSymbolsList().subscribe((res) => (this.symbols = res.symbols));
   }
 
 }
