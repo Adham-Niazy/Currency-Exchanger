@@ -1,17 +1,11 @@
 <div class="most_popular_section">
-  <ng-container *ngIf="!loading">
-    <div
-      class="card__section-container"
-      *ngFor="let item of displayed_list.slice(0, 9)">
-      <h2>
-        {{ amount }} {{ item[0] }} = {{ (amount * +item[2]).toFixed(2) }}
-        {{ item[1] }}
-      </h2>
-      <h3></h3>
-    </div>
-  </ng-container>
-
-  <ng-container *ngIf="loading">
-    <h2 class="loading">Loading..</h2>
-  </ng-container>
+  <div
+    class="card__section-container"
+    *ngFor="let item of displayed_list.slice(0, 9)">
+    <h2>
+      {{ amount }} {{ item[0] }} = {{ (amount * +item[2]).toFixed(2) }}
+      {{ item[1] }}
+    </h2>
+    <h3></h3>
+  </div>
 </div>
